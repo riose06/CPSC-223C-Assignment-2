@@ -9,9 +9,20 @@
 // Purpose:
 
 #include <stdio.h>
+#include <stdlib.h>
+
+// Removes the built-in next line (\n) when using the fgets() function
+void trim(char *s) {
+    s[strcspn(s, "\n")] = '\0';
+}
 
 int main () {
     printf("Welcome to String Search presented by Ethan Rios\n\n");
+
+    FILE *file_ptr;
+    char file_name[50];
+    char file_data;
+    printf("Please enter the name of a data file in the same directory where this program is running: ");
 
 
 

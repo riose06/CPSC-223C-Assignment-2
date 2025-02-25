@@ -18,7 +18,7 @@ gcc -Wall -m64 -no-pie -o main.out main.c -std=c17 -fno-use-linker-plugin
 chmod u+x a2.sh
 chmod u+x main.out
 
-echo "Run the program Chemistry:"
+echo "Run the program String Search:"
 ./main.out
 
 echo "The script file will terminate"
