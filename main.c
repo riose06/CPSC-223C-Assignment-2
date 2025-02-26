@@ -60,20 +60,34 @@ int main () {
         printf("\nThe data from the file was copied into a string array in the program.");
         printf("\nHere is the data that was stored in an array of chars:\n\n");
         printf("%s", file_data);
+        
+        // User enters a string to search for in the file
+        char search[20];
+        printf("\n\nPlease enter a search string: ");
+        fgets(search, 19, stdin);
+        trim(search);
 
+        char* data_ptr = file_data;
+        int found[50];
+        int j = 0;
+        while ((data_ptr = strstr(data_ptr, search)) != NULL) 
+        {
+            found[j] = data_ptr - file_data;
+            data_ptr++;
+            j++;
+        }
+
+        printf("\n\nThank you! \"%s\" was found at these positions counting from the start of the array:\n", search);
+        for (int i = 0; i < j; i++)
+        {
+            printf("%d ", found[i]);
+        }
+        
+
+        printf("\n\nI hope that you enjoyed using string search! Come back at any time.");
+        printf("\nHave a great day!!\n\n");
+        printf("==================================== End of execution ====================================\n\n");
     }
-
-
-
-
-
-
-
-
-
-
-
-
     return 0;
 }
 
