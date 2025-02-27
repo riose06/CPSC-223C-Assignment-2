@@ -3,10 +3,14 @@
 # Author: Ethan Rios
 # CWID: 880071006
 # Email: eirios@csu.fullerton.edu
-# Due date: February 12, 2025 before 2:00am
-# CPSC 223C Assingment 1
+# Due: February 26 @ 11:59pm
+# CPSC 223C Assignment 2 - String Search
 
-# PURPOSE: 
+# PURPOSE: Program is intended to allow the user to choose an available text file. If they 
+#          make a spelling error or the file is not found, the question will be repeated
+#          and the user may try again. The user then enters one or more characters, which
+#          the program takes and finds the number of times the string appears in the text
+#          file, as well as the index / indices the start of the string is found at. 
 
 echo "Remove unnecessary files"
 rm -f main.o main.out

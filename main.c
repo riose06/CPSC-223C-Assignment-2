@@ -4,9 +4,14 @@
  * Email: eirios@csu.fullerton.edu
  * Due: February 26 @ 11:59pm
  * CPSC 223C Assignment 2 - String Search
-*/
+ * Last updated: February 26 @ 4:53pm
+ */
 
-// PURPOSE: 
+// PURPOSE: Program is intended to allow the user to choose an available text file. If they 
+//          make a spelling error or the file is not found, the question will be repeated
+//          and the user may try again. The user then enters one or more characters, which
+//          the program takes and finds the number of times the string appears in the text
+//          file, as well as the index / indices the start of the string is found at. 
 
 // "a2.sh" in the terminal will run the bash program!!
 
@@ -29,7 +34,7 @@ int main () {
     // Gives user multiple chances to enter a text file in case of a typing mistake
     do 
     {
-        printf("Please enter the name of a data file in the same directory where this program is running: ");
+        printf("Please enter the name of a text file in the same directory where this program is running: ");
         fgets(file_name, 49, stdin);
         trim(file_name);
 
@@ -56,7 +61,7 @@ int main () {
         }
 
         // Print the number of bytes and contents of the file to the user
-        printf("Thank you! The size of the file you entered has %d bytes.", i);
+        printf("\nThank you! The size of the file you entered has %d bytes.", i);
         printf("\nThe data from the file was copied into a string array in the program.");
         printf("\nHere is the data that was stored in an array of chars:\n\n");
         printf("%s", file_data);
@@ -67,28 +72,37 @@ int main () {
         fgets(search, 19, stdin);
         trim(search);
 
-        char* data_ptr = file_data;
-        int found[50];
-        int j = 0;
-        while ((data_ptr = strstr(data_ptr, search)) != NULL) 
+        char* data_ptr = file_data;       // Instantiate a pointer to file data
+        int found[50];                    // Create an array to hold indices where the string was found
+        int j = 0;                        // Create int to hold the number of times the string was found
+
+        // If search string is not found, else continue
+        if (strstr(file_data, search) == NULL) 
         {
-            found[j] = data_ptr - file_data;
-            data_ptr++;
-            j++;
+            printf("\n\nSorry, the search string you entered was not found.");
+        }
+        else 
+        {
+            while ((data_ptr = strstr(data_ptr, search)) != NULL)    // Places indices where search is found into array
+            {
+                found[j] = data_ptr - file_data;
+                data_ptr++;
+                j++;
+            }
+
+            // Prints how many times search was found and at which indices it was found
+            printf("\n\nThank you! \"%s\" was found %d times, located at these positions counting from the start of the array:\n", search, j);
+            for (int i = 0; i < j; i++)
+            {
+                printf("%d ", found[i]);
+            }
         }
 
-        printf("\n\nThank you! \"%s\" was found at these positions counting from the start of the array:\n", search);
-        for (int i = 0; i < j; i++)
-        {
-            printf("%d ", found[i]);
-        }
         
-
+        // Conclusion
         printf("\n\nI hope that you enjoyed using string search! Come back at any time.");
         printf("\nHave a great day!!\n\n");
         printf("==================================== End of execution ====================================\n\n");
     }
     return 0;
 }
-
-
