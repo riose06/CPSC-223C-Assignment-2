@@ -10,7 +10,7 @@
 #          make a spelling error or the file is not found, the question will be repeated
 #          and the user may try again. The user then enters one or more characters, which
 #          the program takes and finds the number of times the string appears in the text
-#          file, as well as the index / indices the start of the string is found at. 
+#          file, as well as the index / indices the start of the string is found at.
 
 echo "Remove unnecessary files"
 rm -f main.o main.out
